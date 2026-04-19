@@ -1,0 +1,117 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  *, *::before, *::after { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    @apply bg-white text-gray-900 font-body;
+    min-height: 100vh;
+  }
+
+  h1, h2, h3, h4 { @apply font-display; }
+}
+
+@layer components {
+
+  /* ── Cards ─────────────────────────────────── */
+  .card {
+    @apply bg-white border border-gray-200 rounded-2xl p-6 shadow-sm;
+  }
+  .card-hover {
+    @apply card transition-all duration-200 hover:shadow-md hover:-translate-y-0.5 hover:border-blue-200;
+  }
+
+  /* ── Buttons ───────────────────────────────── */
+  .btn-primary {
+    @apply bg-blue-600 hover:bg-blue-700 text-white font-medium px-5 py-2.5 rounded-xl
+           transition-all duration-150 active:scale-95 shadow-sm
+           disabled:opacity-40 disabled:cursor-not-allowed;
+  }
+  .btn-secondary {
+    @apply bg-white hover:bg-gray-50 text-gray-700 font-medium px-5 py-2.5 rounded-xl
+           border border-gray-200 hover:border-gray-300 transition-all duration-150 active:scale-95;
+  }
+  .btn-accent {
+    @apply bg-indigo-600 hover:bg-indigo-700 text-white font-medium px-5 py-2.5 rounded-xl
+           transition-all duration-150 active:scale-95 shadow-sm;
+  }
+  .btn-danger {
+    @apply bg-red-600 hover:bg-red-700 text-white font-medium px-5 py-2.5 rounded-xl
+           transition-all duration-150 active:scale-95;
+  }
+
+  /* ── Inputs ────────────────────────────────── */
+  .input {
+    @apply bg-white border border-gray-300 text-gray-900 rounded-xl px-4 py-2.5
+           placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500/40
+           focus:border-blue-500 transition-all duration-150 w-full;
+  }
+  .select { @apply input cursor-pointer; }
+
+  /* ── Badges ────────────────────────────────── */
+  .badge {
+    @apply inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-semibold;
+  }
+  .badge-pass  { @apply badge bg-emerald-50 text-emerald-700 border border-emerald-200; }
+  .badge-fail  { @apply badge bg-red-50     text-red-700     border border-red-200;     }
+  .badge-reg   { @apply badge bg-blue-50    text-blue-700    border border-blue-200;    }
+  .badge-warn  { @apply badge bg-amber-50   text-amber-700   border border-amber-200;   }
+
+  /* ── Stat cards ────────────────────────────── */
+  .stat-card  { @apply card-hover text-center; }
+  .stat-value { @apply text-3xl font-display font-bold text-gray-900 mt-1; }
+  .stat-label { @apply text-xs text-gray-500 uppercase tracking-wider font-medium; }
+
+  /* ── Tables ────────────────────────────────── */
+  .table-wrapper { @apply overflow-x-auto rounded-xl border border-gray-200; }
+  .table         { @apply w-full text-sm; }
+
+  .table thead tr {
+    @apply bg-gray-50 text-gray-500 uppercase text-xs tracking-wider;
+  }
+  .table thead th {
+    @apply px-4 py-3 text-left font-semibold border-b border-gray-200;
+  }
+  .table tbody tr {
+    @apply border-t border-gray-100 hover:bg-blue-50/40 transition-colors duration-100;
+  }
+  .table tbody td { @apply px-4 py-3 text-gray-800; }
+
+  /* ── Sidebar ───────────────────────────────── */
+  .sidebar-link {
+    @apply flex items-center gap-3 px-4 py-2.5 rounded-xl text-gray-600
+           hover:text-gray-900 hover:bg-gray-100 transition-all duration-150 font-medium text-sm;
+  }
+  .sidebar-link.active {
+    @apply text-blue-700 bg-blue-50 font-semibold;
+  }
+
+  /* ── Page headers ──────────────────────────── */
+  .page-title    { @apply text-2xl font-display font-bold text-gray-900 mb-0.5; }
+  .page-subtitle { @apply text-sm text-gray-500; }
+
+  /* ── Scrollbar ─────────────────────────────── */
+  ::-webkit-scrollbar       { width: 5px; height: 5px; }
+  ::-webkit-scrollbar-track { background: #f3f4f6; }
+  ::-webkit-scrollbar-thumb { background: #d1d5db; border-radius: 3px; }
+  ::-webkit-scrollbar-thumb:hover { background: #9ca3af; }
+}
+
+/* Grade colour helpers */
+.grade-S, .grade-O { color: #7c3aed; font-weight: 700; }
+.grade-Aplus        { color: #2563eb; font-weight: 700; }
+.grade-A            { color: #059669; font-weight: 600; }
+.grade-Bplus        { color: #0d9488; }
+.grade-B            { color: #16a34a; }
+.grade-Cplus        { color: #d97706; }
+.grade-C            { color: #b45309; }
+.grade-U, .grade-SA, .grade-UA { color: #dc2626; font-weight: 700; }
+
+/* Animations */
+@keyframes fadeIn  { from { opacity: 0 }              to { opacity: 1 } }
+@keyframes slideUp { from { opacity: 0; transform: translateY(14px) } to { opacity: 1; transform: translateY(0) } }
+.animate-fade-in  { animation: fadeIn  0.3s ease-out; }
+.animate-slide-up { animation: slideUp 0.35s ease-out; }
